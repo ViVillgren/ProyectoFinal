@@ -13,9 +13,9 @@ public class newThirdPersonController : MonoBehaviour
     //
     private Transform meshPlayer;
     private float gravity;
-    private bool isGrounded;
-    private float groundCheckDistance;
-    private LayerMask groundMask;
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask groundMask;
 
     //move
     private float inputX;
@@ -29,7 +29,7 @@ public class newThirdPersonController : MonoBehaviour
     void Start()
     {
         moveSpeed = 0.1f;
-        gravity = -9.8f;
+        gravity = -7;
         jumpHeight = 1.5f;
         GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
         meshPlayer = tempPlayer.transform.GetChild(0);
@@ -42,9 +42,15 @@ public class newThirdPersonController : MonoBehaviour
     void Update()
     {
 
+        Move();
+
+    }
+
+    private void Move()
+    {
         isGrounded = Physics.CheckSphere(transform.position, groundCheckDistance, groundMask);
 
-        if(isGrounded && velocity.y >0)
+        if (isGrounded && velocity.y > 0)
         {
             velocity.y = -2f;
         }
@@ -53,28 +59,34 @@ public class newThirdPersonController : MonoBehaviour
         inputX = Input.GetAxis("Horizontal");
         inputZ = Input.GetAxis("Vertical");
 
-        if(isGrounded)
+
+        if (isGrounded)
         {
+            //Idle
             if (inputX == 0 && inputZ == 0)
             {
                 pAnimator.SetBool("isWalk", false);
                 pAnimator.SetBool("isRun", false);
             }
+            //Walk
             else if (inputX < 0.5f && inputX > -0.5f && inputZ < 0.5f && inputZ > -0.5)
             {
                 pAnimator.SetBool("isWalk", true);
             }
-
+            //Run
             else
             {
                 pAnimator.SetBool("isRun", true);
             }
 
-            if(Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 Debug.Log("Jump");
             }
+
+            //movement
+            vMovement = new Vector3(inputX * moveSpeed, vMovement.y, inputZ * moveSpeed);
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -89,34 +101,19 @@ public class newThirdPersonController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         charController.Move(velocity * Time.deltaTime);
-
     }
 
 
     private void FixedUpdate()
     {
-        /*
-        // Gravity
-        if (charController.isGrounded)
-        {
-            vMovement.y = 0f;
-        }
-        else
-        {
-            vMovement.y -= gravity + Time.deltaTime;
-        }
-        */
-
-        //movement
-        vMovement = new Vector3(inputX * moveSpeed, vMovement.y, inputZ * moveSpeed);
         charController.Move(vMovement);
 
         // mesh rotate
-        if (inputX != 0 || inputZ !=0)
+        if (inputX != 0 || inputZ != 0)
         {
             Vector3 lookDir = new Vector3(vMovement.x, 0, vMovement.z);
             meshPlayer.rotation = Quaternion.LookRotation(lookDir);
         }
-      
+
     }
 }
