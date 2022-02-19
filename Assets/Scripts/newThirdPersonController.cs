@@ -8,12 +8,14 @@ public class newThirdPersonController : MonoBehaviour
     //component
     private CharacterController charController;
     private Animator pAnimator;
+    public Transform camara;
 
 
     //
     private Transform meshPlayer;
-    private float gravity;
+    [SerializeField] private float gravity;
     [SerializeField] private bool isGrounded;
+    [SerializeField] Transform checkGround;
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask groundMask;
 
@@ -23,14 +25,13 @@ public class newThirdPersonController : MonoBehaviour
     private Vector3 vMovement;
     private float moveSpeed;
     private Vector3 velocity;
-    private float jumpHeight;
+    [SerializeField] private float jumpHeight;
 
     // Start is called before the first frame update
     void Start()
     {
         moveSpeed = 0.1f;
-        gravity = -7;
-        jumpHeight = 1.5f;
+       
         GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
         meshPlayer = tempPlayer.transform.GetChild(0);
         charController = tempPlayer.GetComponent<CharacterController>();
@@ -48,7 +49,7 @@ public class newThirdPersonController : MonoBehaviour
 
     private void Move()
     {
-        isGrounded = Physics.CheckSphere(transform.position, groundCheckDistance, groundMask);
+        isGrounded = Physics.CheckSphere(checkGround.position, groundCheckDistance, groundMask);
 
         if (isGrounded && velocity.y > 0)
         {
@@ -78,17 +79,21 @@ public class newThirdPersonController : MonoBehaviour
             {
                 pAnimator.SetBool("isRun", true);
             }
-
+            //Jump
             if (Input.GetButtonDown("Jump"))
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
                 Debug.Log("Jump");
             }
 
-            //movement
-            vMovement = new Vector3(inputX * moveSpeed, vMovement.y, inputZ * moveSpeed);
+            
         }
 
+        //movement
+        vMovement = new Vector3(inputX * moveSpeed, vMovement.y, inputZ * moveSpeed);
+        vMovement = Quaternion.AngleAxis(camara.rotation.eulerAngles.y, Vector3.up) * vMovement;
+        
+        /*
         if (Input.GetButtonDown("Fire1"))
         {
             pAnimator.SetTrigger("triggerAttack");
@@ -98,6 +103,7 @@ public class newThirdPersonController : MonoBehaviour
         {
             pAnimator.SetTrigger("triggerAttack");
         }
+        */
 
         velocity.y += gravity * Time.deltaTime;
         charController.Move(velocity * Time.deltaTime);
