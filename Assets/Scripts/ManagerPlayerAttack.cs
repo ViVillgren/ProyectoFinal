@@ -27,6 +27,10 @@ public class ManagerPlayerAttack : MonoBehaviour
         {
             Attack();
         }
+        if (Input.GetButtonDown("Fire2") && canAttack)
+        {
+            Attack();
+        }
     }
 
     public void Attack()

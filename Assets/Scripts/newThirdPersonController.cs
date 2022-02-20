@@ -82,8 +82,8 @@ public class newThirdPersonController : MonoBehaviour
             //Jump
             if (Input.GetButtonDown("Jump"))
             {
+                pAnimator.SetBool("Grounded", true);
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-                Debug.Log("Jump");
             }
 
             
