@@ -51,7 +51,7 @@ public class newThirdPersonController : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(checkGround.position, groundCheckDistance, groundMask);
 
-        if (isGrounded && velocity.y > 0)
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -82,7 +82,7 @@ public class newThirdPersonController : MonoBehaviour
             //Jump
             if (Input.GetButtonDown("Jump"))
             {
-                pAnimator.SetBool("Grounded", true);
+                pAnimator.SetTrigger("triggerJump");
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
             }
 
