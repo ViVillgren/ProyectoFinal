@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.35619086, g: 0.3515068, b: 0.3768024, a: 1}
+  m_IndirectSpecularColor: {r: 0.35619083, g: 0.351507, b: 0.37680253, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4003,6 +4003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+  colliderAttack: {fileID: 0}
 --- !u!1001 &283995905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5828,6 +5829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedWeapon: 0
+  colliderAttack: {fileID: 0}
 --- !u!1001 &434091070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20523,7 +20525,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450175625}
-  m_LocalRotation: {x: 0.05423341, y: -0.0000000073448927, z: 3.9908438e-10, w: 0.9985283}
+  m_LocalRotation: {x: 0.05423341, y: -0.000000011066527, z: 6.0102034e-10, w: 0.9985283}
   m_LocalPosition: {x: 0.00000006854534, y: 1.953949, z: -4.658396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -26271,7 +26273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881256758}
-  m_LocalRotation: {x: 0.000083467305, y: -0.000000008323374, z: 6.9472954e-13, w: 1}
+  m_LocalRotation: {x: 0.00008346388, y: -0.000000008453598, z: 7.0557004e-13, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -29259,7 +29261,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042003584}
-  m_LocalRotation: {x: 0.054233417, y: -0.000000007346354, z: 3.9900502e-10, w: 0.9985283}
+  m_LocalRotation: {x: 0.054233413, y: -0.000000011066162, z: 6.0104033e-10, w: 0.9985283}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

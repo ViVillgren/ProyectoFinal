@@ -4,6 +4,7 @@ using UnityEngine;
 public class WeaponChange : MonoBehaviour
 {
     public int selectedWeapon = 0;
+    public GameObject colliderAttack;
 
 
 
@@ -20,11 +21,13 @@ public class WeaponChange : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             selectedWeapon = 0;
+            colliderAttack.layer = LayerMask.NameToLayer("Chainsaw");
         }
 
         if (Input.GetButtonDown("Fire2") && transform.childCount >= 2)
         {
             selectedWeapon = 1;
+            colliderAttack.layer = LayerMask.NameToLayer("Katana");
         }
 
         if (previousSelectedWeapon != selectedWeapon)

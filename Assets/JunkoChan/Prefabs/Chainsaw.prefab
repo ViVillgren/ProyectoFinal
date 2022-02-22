@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3659740924259521789}
   - component: {fileID: 1600828673801153626}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: STdn 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4026329196076389091}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5355905942908372720}
   - component: {fileID: 2660096601934399544}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ChainSawBody 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6425273018398907560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: STup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 1686522023032419396}
   - component: {fileID: 2330613274704894829}
   - component: {fileID: -4622295214157060880}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chainsaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7245021958912923309}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6341956252102807418}
   - component: {fileID: 4800568903598162851}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: STup 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4125042159286624042}
   - component: {fileID: 2610782198455690100}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CV 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4335138801589970259}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 922353790795782668}
   - component: {fileID: 3158555464771990021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StarterRope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8811824692359040201}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ChainSawBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1403582870731957516}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: STdn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5788645811009906959}
   - component: {fileID: 1914805517409732528}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Starter 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214628653393101438}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StarterRope 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,7 +836,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5518173258148012861}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Starter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
