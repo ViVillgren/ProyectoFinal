@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - PlayerAttack
+  - Eggy
+  - Kiwi
   layers:
   - Default
   - TransparentFX

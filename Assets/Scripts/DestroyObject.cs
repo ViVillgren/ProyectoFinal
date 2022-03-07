@@ -27,6 +27,10 @@ public class DestroyObject : MonoBehaviour
         if(currentObjectLife <=0)
         {
             pAnimator.SetTrigger("triggerDeath");
+            if (gameObject.CompareTag("Eggy"))
+            {
+                GameManager.sharedInstance.KillEnemy();
+            }
             Destroy(gameObject,2);
             
         }
