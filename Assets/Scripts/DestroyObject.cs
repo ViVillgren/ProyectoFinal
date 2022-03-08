@@ -12,6 +12,11 @@ public class DestroyObject : MonoBehaviour
 
     private float currentObjectLife;
 
+    public bool dropItem;
+    public GameObject[] itemsToDrop;
+
+    private float maxDistance = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,5 +59,24 @@ public class DestroyObject : MonoBehaviour
             }
 
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (dropItem)
+        {
+            for (int i = 0; i < 1; i++)
+            {
+                Instantiate(itemsToDrop[0], RandomPos(), Quaternion.identity);
+            }
+        }
+    }
+
+    private Vector3 RandomPos()
+    {
+        float x = Random.Range(transform.position.x - maxDistance, transform.position.x + maxDistance);
+        float z = Random.Range(transform.position.z - maxDistance, transform.position.z + maxDistance);
+
+        return new Vector3(x, 0.5f, z);
     }
 }

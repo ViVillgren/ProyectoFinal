@@ -8,6 +8,7 @@ TagManager:
   - PlayerAttack
   - Eggy
   - Kiwi
+  - Life
   layers:
   - Default
   - TransparentFX
