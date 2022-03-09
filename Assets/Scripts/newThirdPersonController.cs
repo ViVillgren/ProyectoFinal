@@ -27,7 +27,9 @@ public class newThirdPersonController : MonoBehaviour
     private Vector3 velocity;
     [SerializeField] private float jumpHeight;
 
-    // Start is called before the first frame update
+    public static newThirdPersonController instance;
+
+   
     void Start()
     {
         moveSpeed = 0.1f;
@@ -37,6 +39,18 @@ public class newThirdPersonController : MonoBehaviour
         charController = tempPlayer.GetComponent<CharacterController>();
         pAnimator = tempPlayer.GetComponentInChildren<Animator>();
 
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        else
+        {
+            instance = this;
+        }
+
+        GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
