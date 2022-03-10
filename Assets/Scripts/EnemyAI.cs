@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
 
     public NavMeshAgent agent;
     public Transform player;
+    private Animator pAnimator;
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
 
@@ -28,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        pAnimator = GetComponent<Animator>();
     }
 
     void Update()
