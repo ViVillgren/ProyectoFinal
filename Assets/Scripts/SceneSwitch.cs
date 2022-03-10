@@ -14,6 +14,13 @@ public class SceneSwitch : MonoBehaviour
     {
         PlayerPrefs.SetString("LastExitName", exitName);
         SceneManager.LoadScene(sceneToLoad);
+
+        if(other.gameObject.CompareTag("Player"))
+            {
+            PlayerPrefs.SetString("LastExitName", exitName);
+            SceneManager.LoadScene(sceneToLoad);
+        }
+            
     }
 
 }
