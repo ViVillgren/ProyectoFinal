@@ -27,8 +27,6 @@ public class newThirdPersonController : MonoBehaviour
     private Vector3 velocity;
     [SerializeField] private float jumpHeight;
 
-    public static newThirdPersonController instance;
-
    
     void Start()
     {
@@ -39,18 +37,6 @@ public class newThirdPersonController : MonoBehaviour
         charController = tempPlayer.GetComponent<CharacterController>();
         pAnimator = tempPlayer.GetComponentInChildren<Animator>();
 
-        if (instance != null)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-
-        else
-        {
-            instance = this;
-        }
-
-        GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -106,18 +92,6 @@ public class newThirdPersonController : MonoBehaviour
         //movement
         vMovement = new Vector3(inputX * moveSpeed, vMovement.y, inputZ * moveSpeed);
         vMovement = Quaternion.AngleAxis(camara.rotation.eulerAngles.y, Vector3.up) * vMovement;
-        
-        /*
-        if (Input.GetButtonDown("Fire1"))
-        {
-            pAnimator.SetTrigger("triggerAttack");
-        }
-
-        if (Input.GetButtonDown("Fire2"))
-        {
-            pAnimator.SetTrigger("triggerAttack");
-        }
-        */
 
         velocity.y += gravity * Time.deltaTime;
         charController.Move(velocity * Time.deltaTime);

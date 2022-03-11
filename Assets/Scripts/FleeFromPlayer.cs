@@ -12,6 +12,8 @@ public class FleeFromPlayer : MonoBehaviour
 
     private Animator pAnimator;
 
+    //public ParticleSystem ps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,18 +27,38 @@ public class FleeFromPlayer : MonoBehaviour
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
-       //Run from Player
-       if (distance < EnemyDistanceRun)
+        //Run from Player
+        if (distance < EnemyDistanceRun)
         {
             Vector3 dirToPlayer = transform.position - player.transform.position;
-
+            
             var newPos = transform.position + dirToPlayer;
 
             agent.SetDestination(newPos);
 
-            pAnimator.SetBool("isWalk", true);
+            Move(true);
+        }
+        else
+        {
+            Move(false);
         }
 
 
+    }
+
+    private void Move(bool walk)
+    {
+
+        //Idle
+        if (walk)
+        {
+            pAnimator.SetBool("isWalk", true);
+            //ps.Play();
+        }
+        //Walk
+        else
+        {
+            pAnimator.SetBool("isWalk", false);
+        }
     }
 }

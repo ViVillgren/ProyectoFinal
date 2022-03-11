@@ -54,7 +54,14 @@ public class EnemyAI : MonoBehaviour
 
         //WalkPoint reached
         if (distanceToWalkPoint.magnitude < 1f)
+        {
             walkPointSet = false;
+            pAnimator.SetBool("isWalk", false);
+        }
+        else
+        {
+            pAnimator.SetBool("isWalk", true);
+        }
     }
 
     private void SearchWalkPoint()

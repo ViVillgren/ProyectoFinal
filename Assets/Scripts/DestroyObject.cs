@@ -6,6 +6,7 @@ using TMPro;
 
 public class DestroyObject : MonoBehaviour
 {
+    private Score score;
 
     [SerializeField] private float hitDamage;
     [SerializeField] private float objectLife;
@@ -20,18 +21,16 @@ public class DestroyObject : MonoBehaviour
     private float maxDistance = 1;
 
     //Win Condition
-    private TextMeshProUGUI score;
-    private int scoreAmount;
+    //private int scoreAmount;
     public bool gameOver;
     public bool win;
 
     //UI
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI gameOverText;
-    public TextMeshProUGUI winText;
+
 
     //Particles & Audio
-    public ParticleSystem rewardParticle;
+    //public ParticleSystem rewardParticle;
     private AudioSource cameraAudioSource;
     private GameManager gameManagerScript;
 
@@ -45,35 +44,22 @@ public class DestroyObject : MonoBehaviour
         pAnimator = GetComponent<Animator>();
 
         //Win Coindition
-        scoreAmount = 5;
-        score = GetComponent<TextMeshProUGUI>();
-        gameOverText.gameObject.SetActive(false);
-        winText.gameObject.SetActive(false);
+        //scoreAmount = 5;
+        scoreText = GetComponent<TextMeshProUGUI>();
         cameraAudioSource = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+
+        score = GameObject.Find("Score").GetComponent<Score>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        score.text = scoreAmount.ToString();
+        
 
         if (currentObjectLife <=0)
         {
-            pAnimator.SetTrigger("triggerDeath");
-
-            if (gameObject.CompareTag("Eggy"))
-            {
-                scoreAmount -= 1;
-
-                if (scoreAmount == 0)
-                {
-                    win = true;
-                    winText.gameObject.SetActive(true);
-                    //playerControllerScript.winAudioSource.PlayOneShot(playerControllerScript.winClip, 1f);
-                    cameraAudioSource.Stop();
-                }
-            }
+            
             Destroy(gameObject,2);
             
         }
@@ -101,6 +87,22 @@ public class DestroyObject : MonoBehaviour
 
     private void OnDestroy()
     {
+        pAnimator.SetTrigger("triggerDeath");
+
+        if (gameObject.CompareTag("Eggy"))
+        {
+           // score.scoreAmount = score.scoreAmount -= 1;
+           // scoreText.text = scoreAmount.ToString();
+
+            if (/*scoreAmount == 0*/ true)
+            {
+                win = true;
+
+                //playerControllerScript.winAudioSource.PlayOneShot(playerControllerScript.winClip, 1f);
+                cameraAudioSource.Stop();
+            }
+        }
+
         if (dropItem)
         {
             for (int i = 0; i < 1; i++)
