@@ -5,12 +5,18 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-
+    //La IA del Enemigo, para que pase de distintos estados hasta atacar al player
     public NavMeshAgent agent;
     public Transform player;
     private Animator pAnimator;
     public LayerMask whatIsGround, whatIsPlayer;
-    public float health;
+
+    //Audio
+    public AudioSource playerAudioSource;
+    public AudioClip attackClip;
+    public AudioClip detectClip;
+
+
 
     //Patroling
     public Vector3 walkpoint;
@@ -25,6 +31,9 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //Collider
+    public GameObject colliderAttack;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -32,7 +41,14 @@ public class EnemyAI : MonoBehaviour
         pAnimator = GetComponent<Animator>();
     }
 
-    void Update()
+    void Start()
+    {
+
+        playerAudioSource = GetComponent<AudioSource>();
+
+    }
+
+        void Update()
     {
         //Check for sight and attack
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -56,11 +72,11 @@ public class EnemyAI : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
-            pAnimator.SetBool("isWalk", false);
+            //pAnimator.SetBool("isWalk", false);
         }
         else
         {
-            pAnimator.SetBool("isWalk", true);
+            //pAnimator.SetBool("isWalk", true);
         }
     }
 
@@ -79,6 +95,7 @@ public class EnemyAI : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
+
     }
 
     private void AttackPlayer()
@@ -90,8 +107,8 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            //Attack code here
 
+            Attack();
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -103,5 +120,22 @@ public class EnemyAI : MonoBehaviour
 
         alreadyAttacked = false;
 
+    }
+
+    public void Attack()
+    {
+        pAnimator.SetTrigger("triggerAttack");
+        playerAudioSource.PlayOneShot(attackClip, 0.5f);
+
+    }
+
+    public void AttackStart()
+    {
+        colliderAttack.SetActive(true);
+    }
+
+    public void AttackEnd()
+    {
+        colliderAttack.SetActive(false);
     }
 }

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateAspa: 40
+  itemParticle: {fileID: 198858562690846188, guid: 968c924d2be019d4b9e67647551eec3e,
+    type: 3}
 --- !u!1 &4430386411919363383
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+
+    // Con  este script controlamos la UI de la vida del jugador
+
+    private newThirdPersonController playerControllerScript;
     public int health;
     public int numOfHearts;
 
@@ -12,13 +16,15 @@ public class Health : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
-    private void Update()
+    void Start()
+    {
+        playerControllerScript = GameObject.Find("Player").GetComponent<newThirdPersonController>();
+    }
+
+    void Update()
     {
 
-        if(health > numOfHearts)
-        {
-            health = numOfHearts;
-        }
+        health = playerControllerScript.objectLife;
 
         for (int i = 0; i < hearts.Length; i++)
         {

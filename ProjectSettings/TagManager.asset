@@ -9,6 +9,8 @@ TagManager:
   - Eggy
   - Kiwi
   - Life
+  - FxTemporaire
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - PostProcessing
   - Katana
   - Chainsaw
-  - 
+  - PostProcessing
   - 
   - 
   - 

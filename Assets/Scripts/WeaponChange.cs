@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class WeaponChange : MonoBehaviour
 {
+
+    // Segun al boton que accionemos del mando cambia de arma y ataca con el mismo boton
+
     public int selectedWeapon = 0;
     public GameObject colliderAttack;
 
 
-
-    // Start is called before the first frame update
     void Start()
     {
         SelectWeapon();

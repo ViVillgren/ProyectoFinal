@@ -5,29 +5,26 @@ using UnityEngine.AI;
 
 public class FleeFromPlayer : MonoBehaviour
 {
-
+    // Con este script el enemigo se alejaria del player cuando este se acercase
     private NavMeshAgent agent;
     public GameObject player;
     public float EnemyDistanceRun;
 
     private Animator pAnimator;
 
-    //public ParticleSystem ps;
 
-    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         pAnimator = GetComponent<Animator>();
-
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
 
-        //Run from Player
+        //segun la distancia que pongas empezara a correr antes o despues
         if (distance < EnemyDistanceRun)
         {
             Vector3 dirToPlayer = transform.position - player.transform.position;
@@ -53,7 +50,6 @@ public class FleeFromPlayer : MonoBehaviour
         if (walk)
         {
             pAnimator.SetBool("isWalk", true);
-            //ps.Play();
         }
         //Walk
         else

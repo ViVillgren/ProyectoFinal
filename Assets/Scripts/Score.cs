@@ -6,7 +6,8 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-
+    // Aqui se encuentra la funcion de que cuando mates a todos los enemigos que te piden ganas la partida
+    //ademas de mostrase por UI el numero que quedan de enemigos
     //Score
     public int scoreAmount;
     public bool win;
@@ -14,21 +15,20 @@ public class Score : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
 
-    // Start is called before the first frame update
     void Start()
     {
         scoreAmount = 5;
         timerScript = GetComponent<Timer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateScore();
     }
     public void UpdateScore()
     {
-       scoreText.text = scoreAmount.ToString();
+       scoreText.text = $"X {scoreAmount.ToString()}";
+   
 
         if (scoreAmount == 0)
         {

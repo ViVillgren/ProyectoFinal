@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataPersistence : MonoBehaviour
 {
-
+    // para que los datos no se destruyan entre escenas
     public static DataPersistence sharedInstance;
     public float time;
 

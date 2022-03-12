@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
+
+    //Script del contador, cuando empiece el juego epieza a contar y para una vez ganes o pierdas la partida
+    // si ganas se mostrara el tiempo final en la escena de Win
     public float timer;
     public bool timerIsRunning = false;
     public Text timeText;

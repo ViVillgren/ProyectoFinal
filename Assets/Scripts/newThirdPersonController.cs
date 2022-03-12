@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class newThirdPersonController : MonoBehaviour
 {
+
+    //El controlador del player. Lo he programado para que segun la inclinacion del joystick del mando se active solo la animacion del caminar
+    //cuando es solo un poco o correr si esta completamente inclinado
 
     //component
     private CharacterController charController;
@@ -27,7 +31,17 @@ public class newThirdPersonController : MonoBehaviour
     private Vector3 velocity;
     [SerializeField] private float jumpHeight;
 
-   
+    //Damage
+    [SerializeField] private int hitDamage;
+    public int objectLife = 5;
+    public bool gameOver;
+
+    //Audio & Particles
+    public AudioClip jumpClip;
+    public AudioSource playerAudioSource;
+    public ParticleSystem jumpParticle;
+ 
+
     void Start()
     {
         moveSpeed = 0.1f;
@@ -37,13 +51,21 @@ public class newThirdPersonController : MonoBehaviour
         charController = tempPlayer.GetComponent<CharacterController>();
         pAnimator = tempPlayer.GetComponentInChildren<Animator>();
 
+        playerAudioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
         Move();
+
+        if (objectLife <= 0)
+        {
+
+            SceneManager.LoadScene("GameOver");
+
+
+        }
 
     }
 
@@ -78,12 +100,15 @@ public class newThirdPersonController : MonoBehaviour
             else
             {
                 pAnimator.SetBool("isRun", true);
+                
             }
             //Jump
             if (Input.GetButtonDown("Jump"))
             {
                 pAnimator.SetTrigger("triggerJump");
                 velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+                playerAudioSource.PlayOneShot(jumpClip, 1f);
+                Instantiate(jumpParticle, transform.position, jumpParticle.transform.rotation);
             }
 
             
@@ -97,6 +122,15 @@ public class newThirdPersonController : MonoBehaviour
         charController.Move(velocity * Time.deltaTime);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("EnemyAttack"))
+        {
+            objectLife -= hitDamage;
+            
+        }
+
+    }
 
     private void FixedUpdate()
     {

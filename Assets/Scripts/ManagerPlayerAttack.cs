@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ManagerPlayerAttack : MonoBehaviour
 {
+
+    //Con esto hacemos que el que la funcion de atacar del player funcione, no solo la animacion si no que tambien
+    // que haga daño siempre que haga la animacion de atacar y que el collider no este siempre activo añadiendo unas etiquetas en la animacion
+    // y un objeto que haga de collider
     private Animator pAnimator;
 
     //Collider
@@ -12,14 +16,12 @@ public class ManagerPlayerAttack : MonoBehaviour
     private bool canAttack;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         pAnimator = GetComponent<Animator>();
         canAttack = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
