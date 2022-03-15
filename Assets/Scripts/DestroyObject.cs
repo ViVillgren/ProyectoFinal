@@ -40,6 +40,8 @@ public class DestroyObject : MonoBehaviour
     public ParticleSystem hitParticle;
     public ParticleSystem explosionParticle;
 
+    private newThirdPersonController player;
+
     void Start()
     {
         //Enemy
@@ -54,6 +56,8 @@ public class DestroyObject : MonoBehaviour
         scoreText = GetComponent<TextMeshProUGUI>();
 
         score = GameObject.Find("Score").GetComponent<Score>();
+
+        player = FindObjectOfType<newThirdPersonController>();
     }
 
     void Update()
@@ -62,8 +66,6 @@ public class DestroyObject : MonoBehaviour
         {
             
             Destroy(gameObject,0.5f);
-            
-
 
         }
     }
@@ -96,8 +98,14 @@ public class DestroyObject : MonoBehaviour
     private void OnDestroy()
     {
         pAnimator.SetTrigger("triggerDeath");
-        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-        AudioSource.PlayClipAtPoint(deathClip, transform.position, 1f);
+
+        if (player.objectLife > 0)
+        {
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            AudioSource.PlayClipAtPoint(deathClip, transform.position, 1f);
+
+        }
+
 
         //Si matamos al enemigo catalogado como Eggy se descontara un punto de la score, llegando a 0 se gana la partida
         if (gameObject.CompareTag("Eggy"))

@@ -35,6 +35,12 @@ public class Score : MonoBehaviour
             win = true;
             timerScript.timerIsRunning = false;
             DataPersistence.sharedInstance.time = timerScript.timer;
+
+            if (!PlayerPrefs.HasKey("TimeRecord"))
+            {
+                PlayerPrefs.SetFloat("TimeRecord", DataPersistence.sharedInstance.time);
+            }
+            
             SceneManager.LoadScene("Win");
 
         }

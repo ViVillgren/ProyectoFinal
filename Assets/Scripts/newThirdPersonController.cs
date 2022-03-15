@@ -40,7 +40,7 @@ public class newThirdPersonController : MonoBehaviour
     public AudioClip jumpClip;
     public AudioSource playerAudioSource;
     public ParticleSystem jumpParticle;
- 
+
 
     void Start()
     {
@@ -61,10 +61,7 @@ public class newThirdPersonController : MonoBehaviour
 
         if (objectLife <= 0)
         {
-
             SceneManager.LoadScene("GameOver");
-
-
         }
 
     }
@@ -127,7 +124,7 @@ public class newThirdPersonController : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyAttack"))
         {
             objectLife -= hitDamage;
-            
+            pAnimator.SetTrigger("triggerDamage");
         }
 
     }
